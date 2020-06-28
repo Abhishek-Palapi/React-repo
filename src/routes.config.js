@@ -1,0 +1,81 @@
+import React from "react";
+import Loadable from "react-loadable";
+import { Switch, Route, Redirect } from "react-router-dom";
+
+function Loading({ error }) {
+  if (error) {
+    return "Something went wrong";
+  } else {
+    return <h3 style={{ padding: "20px" }}>Loading Page</h3>;
+  }
+}
+
+const Home = Loadable({
+  loader: () => import("./app/pages/home/home"),
+  loading: Loading,
+});
+
+const Expertise = Loadable({
+  loader: () => import("./app/pages/expertise/expertise"),
+  loading: Loading,
+});
+
+const Projects = Loadable({
+  loader: () => import("./app/pages/projects/projects"),
+  loading: Loading,
+});
+
+const Contact = Loadable({
+  loader: () => import("./app/pages/contact/contact"),
+  loading: Loading,
+});
+
+
+export const Routes = (props) => (
+  <Switch>
+    <Route
+      exact
+      path="/"
+      render={(routerProps) => (
+        <Home
+          {...routerProps}
+          secondaryColor={props.secondaryColor}
+          changeSecondaryColor={props.changeSecondaryColor}
+          mainJsonData={props.mainJsonData}
+        />
+      )}
+    />
+    <Route
+      path="/expertise"
+      render={(routerProps) => (
+        <Expertise
+          {...routerProps}
+          primaryColor={props.primaryColor}
+          secondaryColor={props.secondaryColor}
+          mainJsonData={props.mainJsonData}
+        />
+      )}
+    />
+    <Route
+      path="/projects"
+      render={(routerProps) => (
+        <Projects
+          {...routerProps}
+          secondaryColor={props.secondaryColor}
+          mainJsonData={props.mainJsonData}
+        />
+      )}
+    />
+    <Route
+      path="/contact"
+      render={(routerProps) => (
+        <Contact
+          {...routerProps}
+          secondaryColor={props.secondaryColor}
+          mainJsonData={props.mainJsonData}
+        />
+      )}
+    />
+    <Redirect from="/**" to="/" />
+  </Switch>
+);
