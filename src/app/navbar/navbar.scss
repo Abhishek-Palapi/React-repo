@@ -1,0 +1,52 @@
+@import "../../variables";
+.nav-container{
+    height: 100vh;
+    position: relative;
+    z-index: 30;
+    display: block;
+}
+.nav-link {
+    // bottom: 0px;
+bottom: 202px;
+    position: absolute;
+    width: 100%;
+}
+.nav-link-item--logo {
+    height: 219px;
+    &--logo {
+        height: 219px;
+    }
+    &--face_image {
+        height: 219px;
+        position: relative;
+        top: 36px;
+        left: 7px;
+        border-radius: 104px;
+        border: 2px solid;
+        padding: 0px;
+    }
+}
+.nav--face_image {
+    height: 219px;
+    position: relative;
+    top: 36px;
+    left: 7px;
+    border-radius: 104px;
+    border: 2px solid;
+    padding: 0px;
+}
+
+.nav-link-item{
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    font-size: 40px;
+    padding: 30px 0px;
+}
+
+ /* // mobile responsive styling */
+@media screen and (max-width: 991px) {
+  .nav-container {
+      display: none;
+  }
+}
